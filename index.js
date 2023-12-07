@@ -1,7 +1,7 @@
 const fs = require("fs");
 const readline = require("readline");
 
-const {nameOfFile, process} = require('./scripts/day-3-part-2')
+const {nameOfFile, process} = require('./scripts/day-4-part-2')
 
 function getInput(name) {
   const fileStream = fs.createReadStream("./input/" + name);

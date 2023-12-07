@@ -1,56 +1,78 @@
-const nameOfFile = "test.txt";
-// const nameOfFile = "input-day-3.txt";
+// const nameOfFile = "test.txt";
+const nameOfFile = "input-day-3.txt";
 
-const maxAmount = {
-  red: 12,
-  green: 13,
-  blue: 14,
-};
+const memo = {}
+
+const getNumberFromRow = (inputs, row) => {
+  let numbers = memo[row]
+  if (numbers) return numbers
+  const matches = inputs[row].matchAll(/\d+/g)
+  numbers = Array.from(matches)
+  memo[row] = numbers
+  return numbers
+}
+
+const getAdjacentNumbers = (inputs, row, index, direction = 0) => {
+  const numbers = getNumberFromRow(inputs, row - direction)
+  const adjacents = []
+  numbers.forEach(number => {
+    const value = number[0]
+    if (
+      (number.index + value.length === index || index === number.index - 1) ||
+      (direction !== 0 && number.index <= index && index <= number.index + value.length)
+    ) {
+      adjacents.push(+number[0])
+    }
+  })
+
+  return adjacents
+}
 
 /**
  *
  * @param {string[]} inputs
  */
 const process = (inputs) => {
-  let result = 0;
-  for (let i = 0; i < inputs.length; i++) {
-    const matchesAll = Array.from(inputs[i].matchAll(/(\*)/g));
+  // key -> row, value -> number
+  console.time()
 
-    matchesAll.forEach((match) => {
-      const ocurrence = match[0];
-      const up = inputs[i - 1]?.substring(
-        match.index - 1,
-        match.index + ocurrence.length + 1
-      );
+  let result = 0
 
-      const down = inputs[i + 1]?.substring(
-        match.index - 1,
-        match.index + ocurrence.length + 1
-      );
+  for (let row = 0; row < inputs.length; row++) {
+    const matches = inputs[row].matchAll(/\*/g)
+    const asterisks = Array.from(matches)
 
-      const left = inputs[i][match.index - 1];
-      const right = inputs[i][match.index + ocurrence.length];
-      if (
-        checkIfContainsNumber(up) ||
-        checkIfContainsNumber(down) ||
-        checkIfContainsNumber(left) ||
-        checkIfContainsNumber(right)
-      ) {
-        console.log(match, i+1);
-        return;
+    if (!asterisks.length) {
+      continue;
+    }
+
+    for (let asterisk of asterisks) {
+      const adjacentNumbers = []
+      const index = asterisk.index
+
+      // above row
+
+      if (row > 0) {
+        adjacentNumbers.push(...getAdjacentNumbers(inputs, row, index, -1))
       }
-    });
-  }
 
-  console.log(result);
+      // same row
+      adjacentNumbers.push(...getAdjacentNumbers(inputs, row, index))
+
+
+      // below row
+      if (row < inputs.length - 1) {
+        adjacentNumbers.push(...getAdjacentNumbers(inputs, row, index, 1))
+      }
+
+      console.log(adjacentNumbers)
+      result += adjacentNumbers.length === 2 ? adjacentNumbers[0] * adjacentNumbers[1] : 0
+    }
+  }
+  console.log(result)
+  console.timeEnd()
 };
 
-const checkIfContainsNumber = (string) => {
-  if (!string) {
-    return false;
-  }
-  return !!string.match(/[\d]/g)?.length;
-};
 
 module.exports = {
   process,
