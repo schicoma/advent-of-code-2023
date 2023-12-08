@@ -23,7 +23,7 @@ const process = (inputs) => {
       const direction = directions[i]
 
       current = network[current][direction === 'L' ? 0 : 1]
-      console.log(current, direction, steps )
+
       if (current === goal) {
         isGoalReached = true
         break;
