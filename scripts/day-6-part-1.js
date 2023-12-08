@@ -1,7 +1,3 @@
-// const nameOfFile = "input-day-6.txt";
-const nameOfFile = "test.txt";
-
-
 const process = (inputs) => {
   const times = inputs[0].split(':')[1].match(/\d+/g)
   const distances = inputs[1].split(':')[1].match(/\d+/g)
@@ -29,5 +25,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

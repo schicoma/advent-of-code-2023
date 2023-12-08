@@ -1,6 +1,3 @@
-// const nameOfFile = "test.txt";
-const nameOfFile = "input-day-2.txt";
-
 const maxAmount = {
   red: 12,
   green: 13,
@@ -41,5 +38,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

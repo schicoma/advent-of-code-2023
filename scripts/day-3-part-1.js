@@ -1,12 +1,3 @@
-// const nameOfFile = "test.txt";
-const nameOfFile = "input-day-3.txt";
-
-const maxAmount = {
-  red: 12,
-  green: 13,
-  blue: 14,
-};
-
 /**
  *
  * @param {string[]} inputs
@@ -55,5 +46,4 @@ const checkIfContainsSymbols = (string) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

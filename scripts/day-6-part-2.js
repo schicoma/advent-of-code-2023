@@ -1,7 +1,3 @@
-const nameOfFile = "input-day-6.txt";
-// const nameOfFile = "test.txt";
-
-
 const process = (inputs) => {
   console.time()
   const maxTime = inputs[0].split(':')[1].match(/\d+/g).join('')
@@ -26,5 +22,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

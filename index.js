@@ -1,9 +1,20 @@
+const { program } = require("commander");
 const fs = require("fs");
 const readline = require("readline");
 
-const {nameOfFile, process} = require('./scripts/day-7-part-2')
+function getInput() {
+  program
+    .option('-t, --test', 'test mode')
+    .option('-d, --day <value>', 'advent code day (default 1)')
+    .option('-p, --part <value>', 'part (default 1)')
 
-function getInput(name) {
+  program.parse();
+  const options = program.opts();
+  // console.log(options)
+
+  const day = options.day ?? 1
+  const part = options.part ?? 1
+  const name = options.test ? 'test.txt' : `input-day-${day}.txt`
   const fileStream = fs.createReadStream("./input/" + name);
 
   const rl = readline.createInterface({
@@ -18,7 +29,9 @@ function getInput(name) {
   });
 
   rl.on("close", () => {
-    process(inputs);
+    const { process: execProcess } = require(`./scripts/day-${day}-part-${part}`)
+    const result = execProcess(inputs)
+    if (result) console.log(result);
   });
 
   rl.on("error", (error) => {
@@ -26,4 +39,4 @@ function getInput(name) {
   });
 }
 
-getInput(nameOfFile);
+getInput();

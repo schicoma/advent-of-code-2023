@@ -1,7 +1,3 @@
-const nameOfFile = "input-day-4.txt";
-// const nameOfFile = "test.txt";
-
-
 const process = (inputs) => {
   let result = 0
   
@@ -27,5 +23,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

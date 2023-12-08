@@ -1,6 +1,3 @@
-const nameOfFile = "input-day-7.txt";
-// const nameOfFile = "test.txt";
-
 const handsByLevel = {
   FIVE_OF_A_KIND: 7,//5
   FOUR_OF_A_KIND: 6, //4,1
@@ -122,11 +119,10 @@ const process = (inputs) => {
     return accum += curr[1] * (index + 1)
   }, 0)
 
-  console.log(result)
   console.timeEnd()
+  return result
 };
 
 module.exports = {
   process,
-  nameOfFile,
 };

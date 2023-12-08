@@ -1,6 +1,3 @@
-// const nameOfFile = "test.txt";
-const nameOfFile = "input-day-3.txt";
-
 const memo = {}
 
 const getNumberFromRow = (inputs, row) => {
@@ -76,5 +73,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

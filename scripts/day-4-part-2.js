@@ -1,6 +1,3 @@
-const nameOfFile = "input-day-4.txt";
-// const nameOfFile = "test.txt";
-
 const memo = {}
 
 const getNumberOfMatches = (card, input) => {
@@ -49,5 +46,4 @@ const processInputsRecursive = (inputs, result, from, to) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

@@ -1,6 +1,3 @@
-// const nameOfFile = "test.txt";
-const nameOfFile = "input-day-1.txt";
-
 const numbers = {
   one: "1",
   two: "2",
@@ -37,5 +34,4 @@ const getNumber = (number) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

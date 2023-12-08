@@ -1,6 +1,3 @@
-const nameOfFile = "input-day-7.txt";
-// const nameOfFile = "test.txt";
-
 const handsByLevel = {
   FIVE_OF_A_KIND: 7,//5
   FOUR_OF_A_KIND: 6, //4,1
@@ -97,5 +94,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };

@@ -1,5 +1,3 @@
-const nameOfFile = "input-day-1.txt";
-
 const process = (inputs) => {
   const result = inputs.reduce((accum, input) => {
     const digits = input.match(/\d/g);
@@ -13,5 +11,4 @@ const process = (inputs) => {
 
 module.exports = {
   process,
-  nameOfFile,
 };
