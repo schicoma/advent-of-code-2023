@@ -36,7 +36,7 @@ function getInput() {
     console.time()
 
     const result = execProcess(inputs)
-    if (result) console.log(result)
+    console.log(result)
 
     console.timeEnd()
   })
