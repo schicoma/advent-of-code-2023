@@ -1,5 +1,6 @@
 /**
  * It took 3 minutes for the algorithym to complete the task.
+ * Update -> now, it takes 45 seconds :)
  *
  */
 
@@ -104,13 +105,34 @@ const process = (inputs) => {
         numberOfTimes,
       ]
 
-      priorityQueue.unshift(newItem)
+      // priorityQueue.unshift(newItem)
+      const index = getIndexToPushPriorityQueue(priorityQueue, newItem)
+      priorityQueue.splice(index, 0, newItem)
     }
 
-    priorityQueue.sort((a, b) => b[HEAT_LOSS] - a[HEAT_LOSS])
+    // priorityQueue.sort((a, b) => b[HEAT_LOSS] - a[HEAT_LOSS])
   }
 
   return minHeatLoss
+}
+
+function getIndexToPushPriorityQueue(priorityQueue, newItem) {
+  const heatLoss = newItem[HEAT_LOSS]
+
+  if (!priorityQueue.length) {
+    return 0
+  }
+
+  if (priorityQueue.length === 1) {
+    return heatLoss < priorityQueue[0][HEAT_LOSS] ? 1: 0
+  }
+
+  const middle = Math.ceil(priorityQueue.length / 2)
+  if (heatLoss < priorityQueue[middle][HEAT_LOSS]) {
+    return getIndexToPushPriorityQueue(priorityQueue.slice(middle, priorityQueue.length), newItem) + middle
+  } else {
+    return getIndexToPushPriorityQueue(priorityQueue.slice(0, middle - 1), newItem)
+  }
 }
 
 module.exports = {
