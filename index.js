@@ -14,8 +14,8 @@ function getInput() {
 
   const day = options.day ?? 1
   const part = options.part ?? 1
-  const name = options.test ? 'test.txt' : `input-day-${day}.txt`
-  const fileStream = fs.createReadStream('./input/' + name)
+  const name = options.test ? 'test.txt' : `input.txt`
+  const fileStream = fs.createReadStream(`./scripts/Day-${day}/${name}`)
 
   const rl = readline.createInterface({
     input: fileStream,
@@ -31,7 +31,7 @@ function getInput() {
   rl.on('close', () => {
     const {
       process: execProcess,
-    } = require(`./scripts/day-${day}-part-${part}`)
+    } = require(`./scripts/Day-${day}/part-${part}`)
     
     console.time()
 
